@@ -60,7 +60,7 @@ class NoteColorOptions extends MusicBeatSubstate
 		grpNumbers = new FlxTypedGroup<Alphabet>();
 		add(grpNumbers);
 
-		for (i in 0...FlxG.save.data.arrowHSV) {
+		for (i in 0...FlxG.save.data.arrowHSV.length) {
 			var yPos:Float = (165 * i) + 35;
 			for (j in 0...3) {
 				var optionText:Alphabet = new Alphabet(0, yPos + 60, Std.string(FlxG.save.data.arrowHSV[i][j]), true);
@@ -84,7 +84,7 @@ class NoteColorOptions extends MusicBeatSubstate
 			shaderArray.push(newShader);
 		}
 
-		hsbText = new Alphabet(0, 0, "Hue    Saturation  Brightness", false, false);//, 0, 0.65);
+		hsbText = new Alphabet(0, 0, "Hue    Saturation  Brightness", false, false);
 		hsbText.x = posX + 240;
 		add(hsbText);
 
@@ -189,11 +189,11 @@ class NoteColorOptions extends MusicBeatSubstate
 
 	function changeSelection(change:Int = 0) {
 		curSelected += change;
-		if (curSelected < 0)
-			curSelected = FlxG.save.data.arrowHSV;
-		if (curSelected >= FlxG.save.data.arrowHSV)
-			curSelected = 0;
-
+		//if (curSelected < 0)
+			//curSelected = FlxG.save.data.arrowHSV.length-1;
+		//if (curSelected >= FlxG.save.data.arrowHSV.length)
+		//	curSelected = 0;
+//
 		curValue = FlxG.save.data.arrowHSV[curSelected][typeSelected];
 		updateValue();
 
@@ -246,9 +246,9 @@ class NoteColorOptions extends MusicBeatSubstate
 			case 2: shaderArray[selected].brightness = 0;
 		}
 
-		//var item = grpNumbers.members[(selected * 3) + type];
+		var item = grpNumbers.members[(selected * 3) + type];
 		//item.changeText('0');
-		//item.offset.x = (40 * (item.lettersArray.length - 1)) / 2;
+	//	item.offset.x = (40 * (item.lettersArray.length - 1)) / 2;
 	}
 	function updateValue(change:Float = 0) {
 		curValue += change;
@@ -272,9 +272,9 @@ class NoteColorOptions extends MusicBeatSubstate
 			case 2: shaderArray[curSelected].brightness = roundedValue / 100;
 		}
 
-		//var item = grpNumbers.members[(curSelected * 3) + typeSelected];
+		var item = grpNumbers.members[(curSelected * 3) + typeSelected];
 		//item.changeText(Std.string(roundedValue));
 		//item.offset.x = (40 * (item.lettersArray.length - 1)) / 2;
-		//if(roundedValue < 0) item.offset.x += 10;
+		if(roundedValue < 0) item.offset.x += 10;
 	}
 }

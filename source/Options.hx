@@ -15,6 +15,7 @@ class Options
 	public static var middlescroll:Bool;
 	public static var ghostTapping:Bool;
 	public static var professionalMode:Bool;
+	public static var notePreset:String = "Normal";
 	// Saving variable!
 	var save = new FlxSave();
 
@@ -31,6 +32,9 @@ class Options
 
 		if (FlxG.save.data.ghostTapping != null)
 			{ghostTapping = FlxG.save.data.ghostTapping;}
+
+		if (FlxG.save.data.professionalMode != null)
+			{professionalMode = FlxG.save.data.professionalMode;}
 
 		if (FlxG.save.data.professionalMode != null)
 			{professionalMode = FlxG.save.data.professionalMode;}

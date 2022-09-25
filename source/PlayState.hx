@@ -23,6 +23,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.util.FlxSave;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
@@ -192,6 +193,17 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+
+		//load the options if the plr goes in charting mode
+		var save = new FlxSave();
+
+		save.flush();
+		trace("Saved on something");
+		Options.saveTheOptions();
+
+		PlayerSettings.player1.controls.loadKeyBinds();
+
+
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
@@ -1373,7 +1385,9 @@ class PlayState extends MusicBeatState
 					}
 
 				default:
+					///babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
 					babyArrow.frames = Paths.getSparrowAtlas('NOTE_assets');
+
 					babyArrow.animation.addByPrefix('green', 'arrowUP');
 					babyArrow.animation.addByPrefix('blue', 'arrowDOWN');
 					babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
@@ -1467,7 +1481,7 @@ class PlayState extends MusicBeatState
 
 
 
-			if (FlxG.save.data.middlescroll || FlxG.save.data.professionalMode)
+			if (FlxG.save.data.middlescroll || FlxG.save.data.professionalMode || FlxG.save.data.player2notes)
 				player2Strums.forEach(function(note)
 					{
 						ModCharts.toggleVisibility(note, false);

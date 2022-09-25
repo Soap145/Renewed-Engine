@@ -285,6 +285,7 @@ import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
+import flixel.util.FlxSave;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -396,6 +397,16 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollow, null, 0.06);
+
+		//load the options
+
+		var save = new FlxSave();
+
+		save.flush();
+		trace("Saved on something");
+		Options.saveTheOptions();
+
+		PlayerSettings.player1.controls.loadKeyBinds();
 
 
 		var versionShit:FlxText = new FlxText(305, FlxG.height - 718, 0, "Funk Engine " + version2 + " (Pre-Release)" + " - Hardcoded Modcharts " + version1 + " (Hardcoded)", 12);

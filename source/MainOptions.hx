@@ -18,7 +18,8 @@ class MainOptions extends MusicBeatState
         "Gameplay",
 		"Modcharts",
 		"Keybinds",
-		"Note Colors"
+		//"Note Presets"
+		//"Note Colors"
 	];  // Menu Settings here!
 
 	var descTex:FlxText;
@@ -196,6 +197,8 @@ class MainOptions extends MusicBeatState
                     openSubState(new KeyBindMenu());
 				case "Note Colors": // keybinds.
                     FlxG.switchState(new NoteColorOptions());
+				case "Note Presets": // keybinds.
+                    openSubState(new NotePresetSubState());
 			}
 		}
 	}

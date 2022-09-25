@@ -98,7 +98,8 @@ class ChartingState extends MusicBeatState
 	{
 		curSection = lastSection;
 
-		var bground:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
+		var bground:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
+		bground.color = 0x808080;
 		bground.scrollFactor.x = 0;
 		bground.scrollFactor.y = 0.18;
 		bground.setGraphicSize(Std.int(bground.width * 1.1));
