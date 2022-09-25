@@ -318,10 +318,10 @@ class MainMenuState extends MusicBeatState
 	var camFollow:FlxObject;
 	
 
-	var version1:String = '1.0.1';
+	var version1:String = '2.9.2';
 	var checker:FlxBackdrop = new FlxBackdrop(Paths.image('Checker'), 0.2, 0.2, true, true);
 	var gradientBar:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, 300, 0xFFAA00AA);
-	var version2:String = '1.0.0';
+	var version2:String = '2.0.0';
 
 	public static var finishedFunnyMove:Bool = false;
 
@@ -409,7 +409,7 @@ class MainMenuState extends MusicBeatState
 		PlayerSettings.player1.controls.loadKeyBinds();
 
 
-		var versionShit:FlxText = new FlxText(305, FlxG.height - 718, 0, "Funk Engine " + version2 + " (Pre-Release)" + " - Hardcoded Modcharts " + version1 + " (Hardcoded)", 12);
+		var versionShit:FlxText = new FlxText(305, FlxG.height - 718, 0, "Funk Engine " + version2 + " (Pre-Release)" + " - Lua Modcharts " + version1 + " (Hardcoded)", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);

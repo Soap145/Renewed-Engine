@@ -18,7 +18,7 @@ class OutdatedSubState extends MusicBeatState
 		add(bg);
 		var ver = "v" + Application.current.meta.get('version');
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"HEY! You're running an outdated version of the game!\nCurrent version is "
+			"Renewed Engine Outdated\nCurrent version is "
 			+ ver
 			+ " while the most recent version is "
 			+ NGio.GAME_VER

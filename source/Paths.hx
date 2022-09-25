@@ -65,6 +65,17 @@ class Paths
 		return getPath('data/$key.xml', TEXT, library);
 	}
 
+	
+	inline static public function lua(key:String,?library:String)
+	{
+		return getPath('data/$key.lua', TEXT, library);
+	}
+	
+	inline static public function luaImage(key:String, ?library:String)
+	{
+		return getPath('data/$key.png', IMAGE, library);
+	}
+
 	inline static public function json(key:String, ?library:String)
 	{
 		return getPath('data/$key.json', TEXT, library);

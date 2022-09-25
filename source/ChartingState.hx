@@ -34,6 +34,11 @@ import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.ByteArray;
 
+#if windows
+import Sys;
+import sys.FileSystem;
+#end
+
 using StringTools;
 
 class ChartingState extends MusicBeatState
@@ -89,7 +94,7 @@ class ChartingState extends MusicBeatState
 	var gradientBar:FlxSprite = new FlxSprite(0, 0).makeGraphic(FlxG.width, 300, 0xFFAA00AA);
 	var rightIcon:HealthIcon;
 
-	var chartver:String = "unknown";
+	var chartver:String = "4.1.9";
 	public var snapText:FlxText;
 	private var blockPressWhileScrolling:Array<FlxUIDropDownMenuCustom> = [];
 
@@ -182,7 +187,7 @@ class ChartingState extends MusicBeatState
 
 		bpmTxt = new FlxText(1000, 50, 0, "", 16);
 		bpmTxt.scrollFactor.set();
-		bpmTxt.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		bpmTxt.setFormat(16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(bpmTxt);
 
 		snapText = new FlxText(60,10,0,"", 14);
@@ -193,8 +198,20 @@ class ChartingState extends MusicBeatState
 		ver = new FlxText(1000, 90, 0, "", 16);
 		ver.scrollFactor.set();
 		ver.text = 'Chart Version: ' + chartver + "\nCurStep: " + curStep;
-		ver.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		ver.setFormat(16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(ver);
+
+		var mdshit:FlxText;
+		mdshit = new FlxText(5, FlxG.height - 23, 0, "MODCHART DETECTED", 12);
+		mdshit.scrollFactor.set();
+		mdshit.setFormat("VCR OSD Mono", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		mdshit.visible = false;
+		add(mdshit);
+
+		#if windows
+		if (FileSystem.exists(Paths.lua(_song.song.toLowerCase()  + "/modchart")))
+			mdshit.visible = true;
+		#end
 
 		strumLine = new FlxSprite(0, 50).makeGraphic(Std.int(FlxG.width / 2), 4);
 		add(strumLine);

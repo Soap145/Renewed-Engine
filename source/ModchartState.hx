@@ -211,7 +211,7 @@ class ModchartState
                 @:privateAccess
 				return PlayState.boyfriend;
 			case 'girlfriend':
-                @:privateAccess
+             //   @:privateAccess
 				return PlayState.gf;
 			case 'dad':
                 @:privateAccess
