@@ -1,0 +1,27 @@
+function start (song)
+   -- happens when the song starts
+end
+
+function update (elapsed)
+   -- happens at every rendered frame
+end
+
+function beatHit (beat)
+   -- happens 4 times a section
+end
+
+function stepHit (step)
+   -- happens 16 times a section
+end
+
+function playerOneSing()
+   -- happens when bf sings
+end
+
+function playerTwoSing()
+   -- happens when dad sings
+end
+
+function playerOneMiss()
+   -- happens when bf missed (this works even with ghost tapping enabled)
+end
